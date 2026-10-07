@@ -60,6 +60,10 @@ A customer order and CRM-style workflow for a men's fashion brand.
 
 [View case study](projects/kachi-reuben.md)
 
+### Workflow Preview
+
+![Kachi & Reuben Sales Order Automation](./kachi-reuben-sales-order-automation.png)
+
 ### 4. AI-Assisted Digital Production & Localization
 International digital-production experience involving structured audio/localization workflows, synchronization, quality control and troubleshooting.
 

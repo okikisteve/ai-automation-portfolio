@@ -24,6 +24,10 @@ A lead-management workflow for an interior architecture and finishing business.
 
 [View case study](projects/iyere-projects.md)
 
+### Workflow Preview
+
+![Iyere Projects AI Customer Support Agent](iyere-ai-customer-support-agent.png)
+
 ### 2. Winxtrack — Recruitment AI Agent
 A recruitment workflow designed to collect candidate applications and CVs, organize candidate data and support AI-assisted qualification.
 

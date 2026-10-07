@@ -42,6 +42,10 @@ A recruitment workflow designed to collect candidate applications and CVs, organ
 
 [View case study](projects/winxtrack-recruitment.md)
 
+### Workflow Preview
+
+![Winxtrack AI Recruitment Agent](winxtrack-ai-recruitment-agent.png)
+
 ### 3. Kachi & Reuben — Fashion Sales & Order Automation
 A customer order and CRM-style workflow for a men's fashion brand.
 

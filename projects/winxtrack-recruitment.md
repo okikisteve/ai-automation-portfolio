@@ -1,39 +1,47 @@
-# Winxtrack — Recruitment AI Agent
+# Winxtrack | Recruitment Intake & AI-Assisted Screening
 
-## Business Context
-This project was designed for a recruitment workflow where candidate information and CVs needed to move into a structured system for review.
+[← Portfolio](../README.md) · [Workflow screenshot](../winxtrack-ai-recruitment-agent.png)
 
-## Problem
-Candidate applications can become difficult to manage when information arrives through disconnected channels. The goal was to standardize collection, organize candidate records and support faster qualification.
+## Business Problem
+Recruitment teams need structured applications, accessible CVs and consistent candidate records rather than fragmented messages and manual copying.
 
-## Solution
-I designed an n8n workflow around a candidate application form, document collection, Google Sheets, email notification and AI-assisted qualification.
+## Workflow Architecture
+```text
+Applicant → n8n application form (+ CV)
+          → n8n processing / field mapping
+          → Google Sheets candidate database
+          → Email notification
+          → AI-assisted qualification design / candidate status fields
+```
 
-### Candidate Data Captured
-- Name and contact information
-- Current location
-- Communication experience
-- Customer service/relationship experience
-- Computer skills
-- Work availability
-- CV/document submission
+![Winxtrack recruitment workflow](../winxtrack-ai-recruitment-agent.png)
 
-### Workflow
-Candidate application → n8n → structured Google Sheets record → company email notification → AI-assisted candidate assessment
+## Candidate Information
+Name, email, phone, current location, communication and customer-service experience, computer skills, evening availability and CV submission.
 
-## My Contribution
-- Designed the candidate intake structure
-- Built the n8n form workflow
-- Mapped form fields into the recruitment database
-- Configured email routing
-- Structured fields for AI candidate assessment and application status
-- Tested submissions and corrected data-mapping issues
+## My Work
+- Designed the candidate form and database columns.
+- Built the n8n intake workflow and mapped submissions into Google Sheets.
+- Configured email routing and fields for application status and AI candidate assessment.
+- Tested submissions, investigated errors and corrected field-mapping issues.
+
+## Verification & Status
+**Built/tested:** candidate intake and structured data-mapping workflow, with troubleshooting of form and sheet configuration.  
+**Requires re-verification:** live public form availability, CV access permissions, email delivery and end-to-end AI qualification. The application form has previously shown an unpublished/404 state; this portfolio does not claim uninterrupted production availability.
+
+**Human oversight:** AI assessment should assist, not autonomously make final hiring decisions. Candidate evaluation requires privacy controls and review for fairness.
+
+## Reliability Considerations
+- Validate mandatory fields and CV type/size.
+- Generate a unique application ID to prevent duplicates.
+- Limit access to CVs and candidate records.
+- Retry temporary Sheets/email failures, alert on permanent failures and record execution IDs.
+- Separate AI suggestions from recruiter-approved status changes.
+
+These are design recommendations, not verified production features.
 
 ## Tools
-n8n • Google Sheets • Gmail • AI/LLM tools
-
-## Skills Demonstrated
-Recruitment automation • workflow design • data collection • document handling • AI-assisted screening • QA/testing • process improvement
+n8n · Google Sheets · Gmail · AI/LLM tools
 
 ## Privacy
-Candidate CVs, personal information, email credentials and other private recruitment data are excluded from this repository.
+Candidate CVs, personal records and credentials are intentionally excluded.

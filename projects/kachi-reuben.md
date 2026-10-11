@@ -1,42 +1,45 @@
-# Kachi & Reuben — Fashion Sales & Order Automation
+# Kachi & Reuben | Fashion Order Intake Automation
 
-## Business Context
-Kachi & Reuben is a men's fashion brand. This project focused on creating a structured digital order-intake and customer-management workflow.
+[← Portfolio](../README.md) · [Workflow screenshot](../kachi-reuben-sales-order-automation.png)
 
-## Problem
-Customer orders contain multiple details—product, size, colour, quantity, order type, delivery information and special instructions. Capturing these consistently is essential for fulfilment and customer service.
+## Business Problem
+A men's fashion brand needs complete, consistent customer orders covering product variations, order type, delivery preferences and customer communication.
 
-## Solution
-I built an n8n workflow that captures structured order information, records it in Google Sheets and triggers email communication.
+## Workflow Architecture
+```text
+Customer → n8n order form → field mapping → Google Sheets order database
+                                         └→ Gmail order communication
+Future extensions: WhatsApp, Calendar, marketing follow-ups
+```
 
-### Workflow
-Customer order form → n8n → Google Sheets → Gmail → future calendar/WhatsApp extensions
+![Kachi & Reuben order workflow](../kachi-reuben-sales-order-automation.png)
 
-### Order Data Structure
-- Customer name and WhatsApp number
-- Product/item
-- Product category
-- Size and colour
-- Quantity
-- Ready-to-wear / pre-order / custom order type
-- Delivery location and preferred date
-- Preferred contact method
-- Special instructions/measurements
-- Order ID
+## Captured Order Details
+Customer name and WhatsApp number; product and category; size, colour and quantity; ready-to-wear, pre-order or custom order; delivery location and preferred date; contact preference; special instructions/measurements; order ID.
 
-## My Contribution
-- Designed the customer order form
-- Built the n8n workflow
-- Created and corrected Google Sheets mappings
-- Configured Gmail steps and tested delivery
-- Added order-identification structure
-- Planned WhatsApp, calendar and marketing extensions
+## My Work
+- Designed the structured order form and workflow.
+- Mapped form submissions to Google Sheets and corrected mapping errors.
+- Configured Gmail communication and tested submissions.
+- Added an order-ID field/structure and corrected form labels.
+- Identified email spam placement during testing.
+
+## Verification & Status
+**Built/tested:** form → n8n → Google Sheets → Gmail, with corrected mapping and successful test submissions.  
+**Needs improvement:** email deliverability and production-grade duplicate handling.  
+**Planned, not yet verified as deployed:** WhatsApp, Calendar and marketing extensions.
+
+## Reliability Considerations
+- Validate quantity, contact details and required product choices.
+- Ensure every order has a unique identifier; check for duplicate submissions.
+- Log email-send failures without exposing private customer data.
+- Retry transient provider errors, with limits to avoid duplicate customer emails.
+- Monitor form, sheet and email executions and define a manual recovery procedure.
+
+These are proposed improvements, not assertions of completed implementation.
 
 ## Tools
-n8n • Google Sheets • Gmail • AI/LLM tools
-
-## Skills Demonstrated
-E-commerce workflow design • CRM automation • data mapping • customer intake • email automation • QA/testing • process design
+n8n · Google Sheets · Gmail
 
 ## Privacy
-Customer records, credentials and private business information are not published.
+No customer records, payment information or private credentials are included.

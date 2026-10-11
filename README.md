@@ -1,95 +1,55 @@
-# Steven Iyere — AI Automation Portfolio
+# Steven Iyere | AI Automation & Workflow Portfolio
 
-Business-focused AI automation and n8n workflow projects designed to reduce manual work, improve customer and candidate experiences, and connect everyday business tools.
+**n8n automation • Business process design • AI-assisted operations • Integrations & troubleshooting**
 
-## About Me
+I design practical automation workflows that help businesses capture information, organize records, coordinate follow-ups and reduce repetitive work. My projects cover recruitment, lead management and customer orders, with an additional background in AI-assisted digital production.
 
-I build practical AI-assisted workflows for business operations, recruitment, lead management, customer intake, sales and digital production. My work combines **n8n**, AI tools, Google Workspace, CRM-style processes and API integrations to turn repetitive processes into structured workflows.
+**Based in Lagos, Nigeria | Open to global remote and contract opportunities**
 
-This portfolio documents selected projects and the problems they were designed to solve. Sensitive credentials, private customer information and production secrets are intentionally excluded.
+## Featured Automation Projects
 
-## Featured Projects
+| Project | Business challenge | Workflow | Evidence |
+| --- | --- | --- | --- |
+| [Winxtrack — Recruitment Intake](projects/winxtrack-recruitment.md) | Collect applications and organize candidate information | Form → n8n → Google Sheets / email, with AI-assisted screening design | [Workflow image](winxtrack-ai-recruitment-agent.png) |
+| [Kachi & Reuben — Sales Order Intake](projects/kachi-reuben.md) | Standardize product orders and customer details | Form → n8n → Google Sheets → Gmail | [Workflow image](kachi-reuben-sales-order-automation.png) |
+| [Iyere Projects — Lead Management](projects/iyere-projects.md) | Centralize inquiries and support timely follow-up | Form → n8n → Google Sheets; tested calendar follow-up | [Workflow image](iyere-ai-customer-support-agent.png) |
 
-### 1. Iyere Projects — Lead & CRM Automation
-A lead-management workflow for an interior architecture and finishing business.
+### Winxtrack — Recruitment Workflow
+![Winxtrack recruitment workflow](winxtrack-ai-recruitment-agent.png)
 
-**Workflow:** Lead form → n8n → Google Sheets → AI-assisted processing → calendar/communication steps
+### Kachi & Reuben — Order Workflow
+![Kachi & Reuben order workflow](kachi-reuben-sales-order-automation.png)
 
-**Highlights**
-- Structured lead capture and centralized records
-- Automated workflow orchestration with n8n
-- Calendar event creation for follow-up
-- AI-agent experimentation for lead handling
-- WhatsApp/API integration work
+### Iyere Projects — Lead Workflow
+![Iyere Projects lead workflow](iyere-ai-customer-support-agent.png)
 
-[View case study](projects/iyere-projects.md)
+## Additional Experience
 
-### Workflow Preview
+[AI-Assisted Digital Production & Localization](projects/ai-digital-production.md) — speaker management, dubbing synchronization, quality assurance and troubleshooting in multilingual production.
 
-![Iyere Projects AI Customer Support Agent](iyere-ai-customer-support-agent.png)
+## Technical Capabilities
 
-### 2. Winxtrack — Recruitment AI Agent
-A recruitment workflow designed to collect candidate applications and CVs, organize candidate data and support AI-assisted qualification.
+- **Automation:** n8n, form triggers, workflow orchestration, field mapping and conditional workflow design
+- **Integrations:** Google Sheets, Gmail, Google Calendar; exploratory Meta/WhatsApp API configuration
+- **AI:** AI-agent experimentation, AI-assisted processing, prompt engineering and human review
+- **Delivery:** iterative testing, troubleshooting, documentation and business-process analysis
 
-**Workflow:** Candidate form + CV → n8n → Google Sheets → email notification → AI qualification
+**Reliability focus:** I am expanding my production automation practice to include systematic input validation, error workflows, retry/backoff policies, duplicate prevention, monitoring and recovery. These are **areas for further implementation**, not claims that every portfolio workflow already includes them.
 
-**Highlights**
-- Structured candidate intake
-- CV/document capture
-- Recruitment database mapping
-- Automated email routing
-- AI-assisted candidate screening workflow
+## How I Work
 
-[View case study](projects/winxtrack-recruitment.md)
+1. Understand the business process and identify repetitive tasks.
+2. Define intake fields, outputs and integration points.
+3. Build the workflow and map data between services.
+4. Test sample submissions and fix integration or data-mapping problems.
+5. Document what works, what remains experimental and what should be improved before production deployment.
 
-### Workflow Preview
+## Project Status & Evidence
 
-![Winxtrack AI Recruitment Agent](winxtrack-ai-recruitment-agent.png)
+These are selected project case studies, not downloadable production deployments. Screenshots illustrate workflow structure. Some components were tested, while others remain planned or experimental; each case study distinguishes them. No production credentials, personal customer records or candidate CVs are published.
 
-### 3. Kachi & Reuben — Fashion Sales & Order Automation
-A customer order and CRM-style workflow for a men's fashion brand.
+## Contact & Availability
 
-**Workflow:** Product/order form → n8n → Google Sheets → Gmail → planned calendar/WhatsApp extensions
-
-**Highlights**
-- Product and order intake
-- Customer contact and delivery information capture
-- Order ID and status-ready data structure
-- Automated email workflow
-- Foundation for WhatsApp and marketing automation
-
-[View case study](projects/kachi-reuben.md)
-
-### Workflow Preview
-
-![Kachi & Reuben Sales Order Automation](https://raw.githubusercontent.com/okikisteve/ai-automation-portfolio/main/kachi-reuben-sales-order-automation.png)
-
-### 4. AI-Assisted Digital Production & Localization
-International digital-production experience involving structured audio/localization workflows, synchronization, quality control and troubleshooting.
-
-[View case study](projects/ai-digital-production.md)
-
-## Core Skills
-
-- n8n workflow automation
-- AI agents and prompt engineering
-- Business process automation
-- Google Sheets and Gmail integrations
-- Form and CRM workflow design
-- Recruitment automation
-- Customer/order intake automation
-- API and webhook concepts
-- Workflow testing and troubleshooting
-- AI-assisted content and digital production
-
-## Tools
-
-n8n • ChatGPT • Claude • Gemini • Google Sheets • Gmail • Google Calendar • Canva • Photoshop • CapCut • Notion • Trello • Slack
-
-## What I Focus On
-
-I approach automation from the business problem first: identify repetitive work, define the data that needs to move, map the decision points, connect the right tools, test the workflow and make the process easier for the people using it.
-
----
+**GitHub:** [okikisteve](https://github.com/okikisteve)  
 **Location:** Lagos, Nigeria  
-**Open to:** Global remote AI automation, AI operations, workflow, content and evaluation opportunities
+**Interested in:** Remote automation specialist, AI operations, n8n workflow development and related contract roles.

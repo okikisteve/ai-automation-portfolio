@@ -13,6 +13,7 @@ I design practical automation workflows that help businesses capture information
 | [Winxtrack — Recruitment Intake](projects/winxtrack-recruitment.md) | Collect applications and organize candidate information | Form → n8n → Google Sheets / email, with AI-assisted screening design | [Workflow image](winxtrack-ai-recruitment-agent.png) |
 | [Kachi & Reuben — Sales Order Intake](projects/kachi-reuben.md) | Standardize product orders and customer details | Form → n8n → Google Sheets → Gmail | [Workflow image](kachi-reuben-sales-order-automation.png) |
 | [Iyere Projects — Lead Management](projects/iyere-projects.md) | Centralize inquiries and support timely follow-up | Form → n8n → Google Sheets; tested calendar follow-up | [Workflow image](iyere-ai-customer-support-agent.png) |
+| [Salesforce — Automated Lead Qualification](projects/salesforce-lead-qualification.md) | Categorize incoming project leads by budget | Salesforce record-triggered Flow → Decision → Lead Category assignment | [Case study](projects/salesforce-lead-qualification.md) |
 
 ### Winxtrack — Recruitment Workflow
 ![Winxtrack recruitment workflow](winxtrack-ai-recruitment-agent.png)
@@ -29,7 +30,7 @@ I design practical automation workflows that help businesses capture information
 
 ## Technical Capabilities
 
-- **Automation:** n8n, form triggers, workflow orchestration, field mapping and conditional workflow design
+- **Automation:** n8n, Salesforce Flow Builder, record-triggered flows, form triggers, workflow orchestration, field mapping and conditional workflow design
 - **Integrations:** Google Sheets, Gmail, Google Calendar; exploratory Meta/WhatsApp API configuration
 - **AI:** AI-agent experimentation, AI-assisted processing, prompt engineering and human review
 - **Delivery:** iterative testing, troubleshooting, documentation and business-process analysis

@@ -78,6 +78,12 @@ These tests demonstrate that the three main branches successfully classify newly
 
 ## Evidence and screenshots
 
+### Active Salesforce Flow Builder workflow
+
+![Salesforce Automated Lead Qualification and Assignment V2 — active record-triggered workflow](../Salesforce%20Flow%20Automation.png)
+
+[Open full-resolution workflow screenshot](../Salesforce%20Flow%20Automation.png)
+
 Screenshots captured during implementation show:
 
 - **Flow Builder:** Record-Triggered Flow → Classify Lead by Budget → three Assignment branches.
@@ -86,7 +92,7 @@ Screenshots captured during implementation show:
 - **Medium Priority:** Test Medium Budget Client — ₦25,000,000 and Lead Category Medium Priority.
 - **High Priority:** Test High Priority V2 — ₦120,000,000 and Lead Category High Priority.
 
-*Screenshot image files are not yet embedded in this repository. The case study documents the evidence visible in the development session; images should be uploaded only after cropping browser tabs, identifying data and other unrelated screen content.*
+*The active Flow Builder workflow screenshot is published above. Individual saved-record test screenshots are documented but have not yet been uploaded to this repository.*
 
 ## Skills demonstrated
 
@@ -97,6 +103,6 @@ Salesforce CRM · Flow Builder · Record-triggered flows · Before-save automati
 - Explicitly resolve and test the exact ₦100,000,000 boundary.
 - Test ₦10,000,000 and updated-record behavior.
 - Add error handling, reporting and optional notifications or task creation in a separate after-save automation.
-- Capture clean, sanitized screenshots of the flow and results.
+- Add clean, sanitized screenshots of the three saved Lead Category test results.
 
 **Scope:** This is a Salesforce Developer Edition demonstration. It does not claim a production deployment, automated ownership reassignment, email notifications, or integration with n8n.

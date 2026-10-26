@@ -1,48 +1,102 @@
 # Salesforce Flow — Automated Lead Qualification
 
-**Platform:** Salesforce Developer Edition · Flow Builder · Record-Triggered Flow
-
-**Project:** Automated Lead Qualification and Assignment (V2)
+**Platform:** Salesforce Developer Edition · Salesforce Flow Builder  
+**Project:** Automated Lead Qualification and Assignment — V2  
+**Status:** Activated and verified with newly created test leads on 26 October 2026  
+**Use case:** Interior project lead prioritization for Iyere Projects Limited (development demonstration)
 
 ## Business problem
-Interior project inquiries vary considerably in budget. Manually sorting incoming leads slows prioritization and follow-up. This prototype categorizes Salesforce Lead records using an Estimated Project Budget field.
 
-## Workflow
+Incoming interior design and construction enquiries can vary widely in estimated budget. Manually sorting every lead creates repetitive work and can delay attention to higher-value opportunities. This workflow classifies each Salesforce Lead automatically when the record is created or updated.
 
-1. A Lead record is created or updated with an estimated project budget.
-2. A record-triggered flow checks that the budget is populated.
-3. A Decision element, **Classify Lead by Budget**, routes the lead by budget.
-4. Assignment elements set the Lead Category field on the triggering Lead.
-5. The flow is configured for **Fast Field Updates** (before-save field assignment).
+## Workflow architecture
 
-## Budget rules (V2 configuration under final review)
+```text
+Lead created or updated
+        |
+        v
+Record-Triggered Flow (Lead)
+Fast Field Updates / before-save
+        |
+        v
+Classify Lead by Budget (Decision)
+        |
+        +-- High Priority ----> Assign High Priority ----+
+        |                                                |
+        +-- Medium Priority --> Assign Medium Priority --+--> Save Lead
+        |                                                |
+        +-- Low Priority -----> Assign Low Priority -----+
+        |
+        +-- Default Outcome --> No category assignment
+```
 
-| Category | Estimated project budget |
+### Configuration
+
+- **Object:** Lead
+- **Trigger:** A record is created or updated
+- **Optimization:** Fast Field Updates (before-save)
+- **Input:** Estimated Project Budget
+- **Decision:** Classify Lead by Budget
+- **Output:** Lead Category
+- **Actions:** Assign High Priority, Assign Medium Priority, Assign Low Priority
+
+Because this is a **before-save** flow, the Assignment elements set the field on the triggering record without requiring a separate Update Records element.
+
+## Budget classification
+
+| Lead Category | Budget rule |
 | --- | --- |
-| High Priority | ₦100,000,000 and above |
-| Medium Priority | Above ₦10,000,000 and below ₦100,000,000 |
-| Low Priority | ₦10,000,000 and below (operator boundary still being verified) |
+| High Priority | Greater than ₦100,000,000 |
+| Medium Priority | Greater than ₦10,000,000 and less than ₦100,000,000 |
+| Low Priority | Less than or equal to ₦10,000,000 |
 
-The flow also has a default outcome for records not matching a named category.
+**Boundary note:** The displayed High and Medium outcome settings previously used strict greater-than/less-than operators. Therefore an exact budget of **₦100,000,000** may reach the Default Outcome unless the boundary has subsequently been adjusted. This case still requires a specific boundary test. The confirmed Low Priority operator is **Less Than or Equal**.
 
-## Testing and evidence
+## Verified end-to-end test cases
 
-- Debug run using a ₦120,000,000 Lead selected the **High Priority** decision outcome and updated the `Lead_Category__c` variable.
-- Debug run using a ₦50,000,000 Lead selected the **Medium Priority** outcome and updated the `Lead_Category__c` variable.
-- A newly created test Lead with an estimated budget of ₦5,000,000 displayed **Low Priority** in the Salesforce Lead details page.
-- The Start element was verified as **Lead**, **created or updated**, optimized for **Fast Field Updates**.
+The following records were created in Salesforce, and their saved Lead Category values were visually checked on the Lead details screen after V2 activation.
 
-**Status as of 26 October 2026:** V2 is **inactive**. Debug tests and a test Lead demonstrate the classification logic, but the final Low Priority operator check, activation, and post-activation end-to-end verification are pending. Debug runs performed in rollback mode do not themselves save Lead changes.
+| Test record | Estimated budget | Saved Lead Category | Result |
+| --- | ---: | --- | --- |
+| Test Low Budget Client | ₦5,000,000 | Low Priority | Passed |
+| Test Medium Budget Client | ₦25,000,000 | Medium Priority | Passed |
+| Test High Priority V2 | ₦120,000,000 | High Priority | Passed |
+
+These tests demonstrate that the three main branches successfully classify newly created Lead records and persist the result.
+
+## Implementation steps
+
+1. Added Estimated Project Budget and Lead Category fields to the Lead workflow.
+2. Configured a record-triggered Lead flow for creation and updates.
+3. Selected **Fast Field Updates** for before-save changes.
+4. Built the **Classify Lead by Budget** Decision element.
+5. Added category-specific Assignment elements.
+6. Used debug runs to inspect routing.
+7. Saved and activated **V2**.
+8. Created new sample leads at ₦5m, ₦25m and ₦120m.
+9. Opened the Lead **Details** view and verified the automatically populated category.
+
+## Evidence and screenshots
+
+Screenshots captured during implementation show:
+
+- **Flow Builder:** Record-Triggered Flow → Classify Lead by Budget → three Assignment branches.
+- **Activation:** Salesforce success banner, “Your automation was activated,” with V2 marked Active.
+- **Low Priority:** Test Low Budget Client — ₦5,000,000 and Lead Category Low Priority.
+- **Medium Priority:** Test Medium Budget Client — ₦25,000,000 and Lead Category Medium Priority.
+- **High Priority:** Test High Priority V2 — ₦120,000,000 and Lead Category High Priority.
+
+*Screenshot image files are not yet embedded in this repository. The case study documents the evidence visible in the development session; images should be uploaded only after cropping browser tabs, identifying data and other unrelated screen content.*
 
 ## Skills demonstrated
 
-Salesforce Flow Builder · Record-triggered automation · Decision outcomes · Conditional routing · Field assignments · Before-save updates · Debugging · Lead data management
+Salesforce CRM · Flow Builder · Record-triggered flows · Before-save automation · Decision logic · Conditional routing · Field assignments · Debugging · End-to-end testing · Workflow documentation
 
-## Next steps
+## Future improvements
 
-- Confirm the Low Priority operator is **Less Than or Equal** to ₦10,000,000.
-- Save and activate V2 after final review.
-- Test newly created and updated Leads at boundary values (₦10 million and ₦100 million) and verify the saved Lead Category.
-- Add sanitized screenshots of the flow canvas and test results.
+- Explicitly resolve and test the exact ₦100,000,000 boundary.
+- Test ₦10,000,000 and updated-record behavior.
+- Add error handling, reporting and optional notifications or task creation in a separate after-save automation.
+- Capture clean, sanitized screenshots of the flow and results.
 
-*This is a development/demo workflow, not a claim of production deployment.*
+**Scope:** This is a Salesforce Developer Edition demonstration. It does not claim a production deployment, automated ownership reassignment, email notifications, or integration with n8n.

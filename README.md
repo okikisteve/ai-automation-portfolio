@@ -13,7 +13,7 @@ I design practical automation workflows that help businesses capture information
 | [Winxtrack — Recruitment Intake](projects/winxtrack-recruitment.md) | Collect applications and organize candidate information | Form → n8n → Google Sheets / email, with AI-assisted screening design | [Workflow image](winxtrack-ai-recruitment-agent.png) |
 | [Kachi & Reuben — Sales Order Intake](projects/kachi-reuben.md) | Standardize product orders and customer details | Form → n8n → Google Sheets → Gmail | [Workflow image](kachi-reuben-sales-order-automation.png) |
 | [Iyere Projects — Lead Management](projects/iyere-projects.md) | Centralize inquiries and support timely follow-up | Form → n8n → Google Sheets; tested calendar follow-up | [Workflow image](iyere-ai-customer-support-agent.png) |
-| [Salesforce — Automated Lead Qualification](projects/salesforce-lead-qualification.md) | Categorize incoming project leads by budget | Salesforce record-triggered Flow → Decision → Lead Category assignment | [Case study](projects/salesforce-lead-qualification.md) |
+| [Salesforce — Automated Lead Qualification](projects/salesforce-lead-qualification.md) | Categorize incoming project leads by budget | Active Salesforce record-triggered Flow → Decision → Lead Category assignment | [Workflow image](Salesforce%20Flow%20Automation.png) · [Case study](projects/salesforce-lead-qualification.md) |
 
 ### Winxtrack — Recruitment Workflow
 ![Winxtrack recruitment workflow](winxtrack-ai-recruitment-agent.png)
@@ -23,6 +23,11 @@ I design practical automation workflows that help businesses capture information
 
 ### Iyere Projects — Lead Workflow
 ![Iyere Projects lead workflow](iyere-ai-customer-support-agent.png)
+
+### Salesforce — Automated Lead Qualification Workflow
+![Salesforce active lead qualification flow](Salesforce%20Flow%20Automation.png)
+
+[Read the Salesforce case study and verified test results](projects/salesforce-lead-qualification.md)
 
 ## Additional Experience
 

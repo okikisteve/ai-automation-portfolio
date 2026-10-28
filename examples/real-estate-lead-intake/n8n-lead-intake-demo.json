@@ -1,0 +1,85 @@
+{
+  "name": "Portfolio Demo — Real Estate Lead Intake (Sanitized; No CRM Writes)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "portfolio-demo-lead-intake",
+        "responseMode": "responseNode",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "3e7057a0-b113-441a-a9f8-77bc1807cc34",
+      "name": "Authenticated Demo Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        220,
+        300
+      ],
+      "webhookId": "03f7b303-1b64-425a-94e8-2e494c10a748",
+      "notes": "Assign your own n8n Header Auth credential before testing. Do not publish without authentication."
+    },
+    {
+      "parameters": {
+        "jsCode": "/**\n * Synthetic, client-neutral real-estate lead qualification example.\n * Pure function: no credentials, API calls, storage, or customer data.\n * IMPORTANT: Lead key is intended for an eventual CRM upsert; this\n * function alone does NOT provide deduplication/idempotency.\n */\nfunction qualifyLead(input) {\n  const p = input && typeof input === \"object\" && !Array.isArray(input) ? input : {};\n  const str = (value) => String(value ?? \"\").trim();\n  const errors = [];\n  const leadKey = str(p.lead_key);\n  const name = str(p.full_name);\n  const phone = str(p.phone);\n  const email = str(p.email).toLowerCase();\n  const service = str(p.service).toLowerCase();\n  const location = str(p.preferred_location);\n\n  const nextActions = {\n    land_sales: \"Verify land title, approved listings, location and requirements\",\n    house_sales: \"Confirm requirements and verify an approved house listing\",\n    rentals: \"Confirm move-in date, rental terms and current listing availability\",\n    joint_ventures: \"Request project brief and route to human review\",\n    construction: \"Request project scope and arrange a human consultation\"\n  };\n\n  if (!/^[a-zA-Z0-9_-]{8,64}$/.test(leadKey)) errors.push(\"lead_key must be 8–64 letters, digits, underscores or hyphens\");\n  if (name.length < 2 || name.length > 100) errors.push(\"full_name must be 2–100 characters\");\n  if (!/^\\+?[0-9 ()-]{7,22}$/.test(phone)) errors.push(\"phone must be a plausible international/local number\");\n  if (email && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) errors.push(\"email must be valid when supplied\");\n  if (!Object.hasOwn(nextActions, service)) errors.push(\"service must be land_sales, house_sales, rentals, joint_ventures or construction\");\n  if (location.length < 2 || location.length > 120) errors.push(\"preferred_location must be 2–120 characters\");\n\n  let budget = null;\n  if (p.budget_ngn !== undefined && p.budget_ngn !== null && str(p.budget_ngn) !== \"\") {\n    const raw = str(p.budget_ngn);\n    if (!/^\\d+$/.test(raw) || !Number.isSafeInteger(Number(raw))) {\n      errors.push(\"budget_ngn must be a non-negative whole naira amount\");\n    } else {\n      budget = Number(raw);\n    }\n  }\n\n  if (errors.length) return { ok: false, errors };\n\n  // Illustrative thresholds only; business owners must approve routing rules.\n  const priority = budget === null ? \"Needs review\"\n    : budget >= 100000000 ? \"High\"\n    : budget >= 10000000 ? \"Medium\"\n    : \"Standard\";\n\n  return {\n    ok: true,\n    lead: {\n      lead_key: leadKey,\n      full_name: name,\n      phone,\n      email,\n      service,\n      preferred_location: location,\n      budget_ngn: budget,\n      priority,\n      next_action: nextActions[service],\n      status: \"New\",\n      source: \"portfolio-demo\"\n    }\n  };\n}\n\nconst body = $input.first().json.body ?? $input.first().json;\nreturn [{ json: qualifyLead(body) }];\n"
+      },
+      "id": "02b71e9a-dc39-4c53-8d93-059683791422",
+      "name": "Validate & Qualify",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        300
+      ],
+      "notes": "Pure demo logic. Does not save leads or create appointments."
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseCode": "={{ $json.ok ? 200 : 400 }}"
+        }
+      },
+      "id": "5d9fef0c-6028-4e1e-a8c2-8539a0d52d65",
+      "name": "Return Demo Result",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        700,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Authenticated Demo Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate & Qualify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate & Qualify": {
+      "main": [
+        [
+          {
+            "node": "Return Demo Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Africa/Lagos"
+  },
+  "pinData": {}
+}

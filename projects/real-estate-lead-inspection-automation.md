@@ -75,6 +75,17 @@ A separate daily follow-up email digest and conversational intake prompt were dr
 4. Add monitoring, error alerts, duplicate prevention and calendar/CRM reconciliation.
 5. Configure approved messaging channels, verify consent and security, then run supervised pilot tests.
 
+## Downloadable technical proof
+
+A **public, anonymized demo** is available for technical review:
+
+- [n8n importable lead-intake workflow](../examples/real-estate-lead-intake/n8n-lead-intake-demo.json) — inactive by default, authenticated Webhook → validation/qualification Code → response, no external CRM writes.
+- [JavaScript qualification module](../examples/real-estate-lead-intake/qualify-lead.mjs) — independent input validation and five-service branching.
+- [Nine unit-test cases](../examples/real-estate-lead-intake/qualify-lead.test.mjs) — negative cases, boundary budgets, repeated inputs and service routing.
+- [Reproduction and security instructions](../examples/real-estate-lead-intake/README.md).
+
+**Verification scope:** All nine JavaScript test bodies passed in a standalone JS test harness. The published workflow JSON parses and contains the three documented nodes. This does **not** claim that the demo has been imported and executed in n8n, or that production CRM/booking operations have been tested.
+
 ## Skills demonstrated
 
 Business process discovery · Requirements mapping · n8n workflow orchestration · Webhooks · JSON/JavaScript transformations · Google Sheets CRM integration · Conditional routing · Lead prioritization · Data validation · Test design · Architecture documentation

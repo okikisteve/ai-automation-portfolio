@@ -2,7 +2,7 @@
 
 **n8n automation • Business process design • AI-assisted operations • Integrations & troubleshooting**
 
-I design practical automation workflows that help businesses capture information, organize records, coordinate follow-ups and reduce repetitive work. My projects cover recruitment, lead management and customer orders, with an additional background in AI-assisted digital production.
+I design practical automation workflows that help businesses capture information, organize records, coordinate follow-ups and reduce repetitive work. My projects cover recruitment, lead management, customer orders, Salesforce Flow and real-estate CRM/booking workflow design, with an additional background in AI-assisted digital production.
 
 **Based in Lagos, Nigeria | Open to global remote and contract opportunities**
 
@@ -14,6 +14,7 @@ I design practical automation workflows that help businesses capture information
 | [Kachi & Reuben — Sales Order Intake](projects/kachi-reuben.md) | Standardize product orders and customer details | Form → n8n → Google Sheets → Gmail | [Workflow image](kachi-reuben-sales-order-automation.png) |
 | [Iyere Projects — Lead Management](projects/iyere-projects.md) | Centralize inquiries and support timely follow-up | Form → n8n → Google Sheets; tested calendar follow-up | [Workflow image](iyere-ai-customer-support-agent.png) |
 | [Salesforce — Automated Lead Qualification](projects/salesforce-lead-qualification.md) | Categorize incoming project leads by budget | Active Salesforce record-triggered Flow → Decision → Lead Category assignment | [Workflow image](Salesforce%20Flow%20Automation.png) · [Case study](projects/salesforce-lead-qualification.md) |
+| [Real Estate — CRM Lead Intake & Inspection Booking Pilot](projects/real-estate-lead-inspection-automation.md) | Centralize enquiries across five services and build a safe viewing workflow | n8n webhook → normalization / qualification → Google Sheets CRM; Google Calendar booking template in progress | [Case study and test status](projects/real-estate-lead-inspection-automation.md) |
 
 ### Winxtrack — Recruitment Workflow
 ![Winxtrack recruitment workflow](winxtrack-ai-recruitment-agent.png)
@@ -28,6 +29,9 @@ I design practical automation workflows that help businesses capture information
 ![Salesforce active lead qualification flow](Salesforce%20Flow%20Automation.png)
 
 [Read the Salesforce case study and verified test results](projects/salesforce-lead-qualification.md)
+
+### Real Estate — Lead Intake & Inspection Automation (pilot)
+A synthetic n8n lead-intake test successfully wrote a classified real-estate enquiry to Google Sheets. The inspection-booking workflow is still under configuration/testing; **booking and WhatsApp automation are not live**. [Read the architecture, test evidence and deployment checklist](projects/real-estate-lead-inspection-automation.md).
 
 ## Additional Experience
 

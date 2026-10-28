@@ -33,6 +33,12 @@ I design practical automation workflows that help businesses capture information
 ### Real Estate — Lead Intake & Inspection Automation (pilot)
 A synthetic n8n lead-intake test successfully wrote a classified real-estate enquiry to Google Sheets. The inspection-booking workflow is still under configuration/testing; **booking and WhatsApp automation are not live**. [Read the architecture, test evidence and deployment checklist](projects/real-estate-lead-inspection-automation.md).
 
+## Reproducible Code & Unit Tests
+
+**[Real-estate automation technical demo](examples/real-estate-lead-intake/README.md)** — importable, inactive n8n webhook workflow; standalone JavaScript for five-service lead qualification; and nine unit tests covering boundary budgets, validation and repeat inputs. All nine JavaScript test bodies passed in an isolated test harness. The n8n demo has **not** been executed against live credentials or presented as a production system.
+
+[View n8n workflow JSON](examples/real-estate-lead-intake/n8n-lead-intake-demo.json) · [View JavaScript source](examples/real-estate-lead-intake/qualify-lead.mjs) · [View tests](examples/real-estate-lead-intake/qualify-lead.test.mjs)
+
 ## Additional Experience
 
 [AI-Assisted Digital Production & Localization](projects/ai-digital-production.md) — speaker management, dubbing synchronization, quality assurance and troubleshooting in multilingual production.

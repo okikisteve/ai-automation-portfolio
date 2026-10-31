@@ -6,6 +6,10 @@ I design practical automation workflows that help businesses capture information
 
 **Based in Lagos, Nigeria | Open to global remote and contract opportunities**
 
+## Creative Copywriting & Storytelling Portfolio
+
+For creative writing roles, see my **[dedicated storytelling and copywriting portfolio](creative-writing-portfolio/README.md)**, featuring six original samples: mystery video scripting, children's animation, brand copy, a three-email outreach sequence, launch-page copy and cross-platform social content.
+
 ## Featured Automation Projects
 
 | Project | Business challenge | Workflow | Evidence |

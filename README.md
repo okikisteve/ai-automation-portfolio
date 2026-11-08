@@ -19,6 +19,7 @@ For creative writing roles, see my **[dedicated storytelling and copywriting por
 | [Iyere Projects — Lead Management](projects/iyere-projects.md) | Centralize inquiries and support timely follow-up | Form → n8n → Google Sheets; tested calendar follow-up | [Workflow image](iyere-ai-customer-support-agent.png) |
 | [Salesforce — Automated Lead Qualification](projects/salesforce-lead-qualification.md) | Categorize incoming project leads by budget | Active Salesforce record-triggered Flow → Decision → Lead Category assignment | [Workflow image](Salesforce%20Flow%20Automation.png) · [Case study](projects/salesforce-lead-qualification.md) |
 | [Real Estate — CRM Lead Intake & Inspection Booking Pilot](projects/real-estate-lead-inspection-automation.md) | Centralize enquiries across five services and build a safe viewing workflow | n8n webhook → normalization / qualification → Google Sheets CRM; Google Calendar booking template in progress | [Case study and test status](projects/real-estate-lead-inspection-automation.md) |
+| [Enterprise IT Operations — 12-Module Simulation](projects/enterprise-it-operations-simulation.md) | Coordinate incident response, service operations and management reporting | n8n mock incident → 12 simulated modules → structured evidence; **not connected to client systems** | [Simulation and verification notes](projects/enterprise-it-operations-simulation.md) |
 
 ### Winxtrack — Recruitment Workflow
 ![Winxtrack recruitment workflow](winxtrack-ai-recruitment-agent.png)
@@ -36,6 +37,10 @@ For creative writing roles, see my **[dedicated storytelling and copywriting por
 
 ### Real Estate — Lead Intake & Inspection Automation (pilot)
 A synthetic n8n lead-intake test successfully wrote a classified real-estate enquiry to Google Sheets. The inspection-booking workflow is still under configuration/testing; **booking and WhatsApp automation are not live**. [Read the architecture, test evidence and deployment checklist](projects/real-estate-lead-inspection-automation.md).
+
+### Enterprise IT Operations — 12-Module Simulated Run
+
+An isolated n8n demonstration evaluated 12 operational capabilities using fictional data on **8 November 2026**, with a structured result for each module. This proves **simulation orchestration**, not a live integration: no production Zoho/CRM access, external actions or live LLM decision-making was verified. [Read the scope, evidence and limitations](projects/enterprise-it-operations-simulation.md).
 
 ## Reproducible Code & Unit Tests
 

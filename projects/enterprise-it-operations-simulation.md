@@ -79,6 +79,12 @@ The JSON above is a **sanitized summary**, not a verbatim exported run file or a
 4. Capture a structured result for each module and aggregate reporting output.
 5. Explicitly tag simulated decisions and external-action status so test results cannot be mistaken for deployment.
 
+## Executive reporting extension (November 2026)
+
+The next demonstration layer is a **Google Sheets → Looker Studio executive dashboard prototype**, intended to make workflow activity understandable without inspecting raw n8n nodes. Proposed views include run-level status, module activity, incident priority, SLA risk, simulated assignments, approval queues and follow-up actions.
+
+See [Executive Operations Dashboard — Reporting Prototype](executive-operations-dashboard.md) for the sanitized reporting model, example event fields and explicit scope limits. **This extension documents a dashboard/reporting design, not independently verified real-time customer-system integration.**
+
 ## What remains before a live implementation
 
 - Approve the module scope and confirm real business rules.

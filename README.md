@@ -14,6 +14,7 @@ For creative writing roles, see my **[dedicated storytelling and copywriting por
 
 | Project | Business challenge | Workflow | Evidence |
 | --- | --- | --- | --- |
+| [Executive Operations Dashboard — Reporting Prototype](projects/executive-operations-dashboard.md) | See operational triggers and pending decisions in one place | Synthetic n8n module outcomes → reporting model in Google Sheets → Looker Studio dashboard design | [Scope, reporting contract and limitations](projects/executive-operations-dashboard.md) |
 | [Winxtrack — Recruitment Intake](projects/winxtrack-recruitment.md) | Collect applications and organize candidate information | Form → n8n → Google Sheets / email, with AI-assisted screening design | [Workflow image](winxtrack-ai-recruitment-agent.png) |
 | [Kachi & Reuben — Sales Order Intake](projects/kachi-reuben.md) | Standardize product orders and customer details | Form → n8n → Google Sheets → Gmail | [Workflow image](kachi-reuben-sales-order-automation.png) |
 | [Iyere Projects — Lead Management](projects/iyere-projects.md) | Centralize inquiries and support timely follow-up | Form → n8n → Google Sheets; tested calendar follow-up | [Workflow image](iyere-ai-customer-support-agent.png) |
@@ -41,6 +42,10 @@ A synthetic n8n lead-intake test successfully wrote a classified real-estate enq
 ### Enterprise IT Operations — 12-Module Simulated Run
 
 An isolated n8n demonstration evaluated 12 operational capabilities using fictional data on **8 November 2026**, with a structured result for each module. This proves **simulation orchestration**, not a live integration: no production Zoho/CRM access, external actions or live LLM decision-making was verified. [Read the scope, evidence and limitations](projects/enterprise-it-operations-simulation.md).
+
+### Executive Dashboard & Operational Visibility
+
+The [executive reporting prototype](projects/executive-operations-dashboard.md) outlines how **run IDs, module statuses, priorities, SLA risks and proposed next actions** can be normalized for leadership review in Google Sheets and Looker Studio. It complements the 12-module n8n simulation and separates **observed simulation evidence** from proposed charts and integrations. This is not a claim of a production-connected dashboard.
 
 ## Reproducible Code & Unit Tests
 

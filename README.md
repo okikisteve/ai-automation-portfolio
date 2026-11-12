@@ -61,6 +61,15 @@ An isolated n8n demonstration evaluated 12 operational capabilities using fictio
 
 **Reliability focus:** I am expanding my production automation practice to include systematic input validation, error workflows, retry/backoff policies, duplicate prevention, monitoring and recovery. These are **areas for further implementation**, not claims that every portfolio workflow already includes them.
 
+## Professional Learning
+
+- **Oxford–UNESCO AI in the Public Sector:** completed orientation and Modules 1–5 learning activities/quizzes in 2026. This does **not** assert that a formal certificate was issued.
+- **AWS cloud concepts via ExamPro:** self-directed study of SaaS, PaaS, APIs and IoT.
+
+## Creative & AI-Media Work
+
+My separate **[creative writing portfolio](creative-writing-portfolio/README.md)** contains six original samples covering video scripts, children's animation, brand messaging, outreach emails and social content. The **[AI-assisted production case study](projects/ai-digital-production.md)** documents dubbing synchronization, localization review and quality assurance. These showcase different skills from live automation deployments.
+
 ## How I Work
 
 1. Understand the business process and identify repetitive tasks.
@@ -76,5 +85,8 @@ These are selected project case studies, not downloadable production deployments
 ## Contact & Availability
 
 **GitHub:** [okikisteve](https://github.com/okikisteve)  
+**LinkedIn:** [Steven Iyere](https://www.linkedin.com/in/emmanuel-okikie-i-8523743b6/)  
 **Location:** Lagos, Nigeria  
-**Interested in:** Remote automation specialist, AI operations, n8n workflow development and related contract roles.
+**Interested in:** Global remote automation specialist, AI operations, n8n workflow development, AI evaluation, scriptwriting and creative production contracts.
+
+*Portfolio updated 12 November 2026.*

@@ -6,6 +6,10 @@ I design practical automation workflows that help businesses capture information
 
 **Based in Lagos, Nigeria | Open to global remote and contract opportunities**
 
+## Actor Portfolio Website & Creative Technology
+
+**[Michael Udeoji — Acting Portfolio Website (case study)](projects/actor-portfolio-website.md)**: responsive HTML-based casting presentation with four selected photographs, film/TV credits, Instagram contact, and QR-based portfolio sharing. The project has been previewed in a browser and packaged for Netlify deployment; a live public URL and the printed QR destination have not been independently verified. No client photos or ZIP binaries are uploaded in this case study.
+
 ## Creative Copywriting & Storytelling Portfolio
 
 For creative writing roles, see my **[dedicated storytelling and copywriting portfolio](creative-writing-portfolio/README.md)**, featuring six original samples: mystery video scripting, children's animation, brand copy, a three-email outreach sequence, launch-page copy and cross-platform social content.
@@ -66,9 +70,10 @@ The [executive reporting prototype](projects/executive-operations-dashboard.md) 
 
 **Reliability focus:** I am expanding my production automation practice to include systematic input validation, error workflows, retry/backoff policies, duplicate prevention, monitoring and recovery. These are **areas for further implementation**, not claims that every portfolio workflow already includes them.
 
-## Professional Learning
+## Certificates & Professional Learning
 
 - **Oxford–UNESCO AI in the Public Sector:** completed orientation and Modules 1–5 learning activities/quizzes in 2026. This does **not** assert that a formal certificate was issued.
+- **IBM short-course certificate:** completion reported; exact course name and credential identifier pending confirmation.
 - **AWS cloud concepts via ExamPro:** self-directed study of SaaS, PaaS, APIs and IoT.
 
 ## Creative & AI-Media Work
@@ -94,4 +99,4 @@ These are selected project case studies, not downloadable production deployments
 **Location:** Lagos, Nigeria  
 **Interested in:** Global remote automation specialist, AI operations, n8n workflow development, AI evaluation, scriptwriting and creative production contracts.
 
-*Portfolio updated 12 November 2026.*
+*Portfolio updated 13 November 2026.*

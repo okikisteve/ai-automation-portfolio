@@ -1,0 +1,85 @@
+{
+  "name": "Portfolio Demo — Incident Triage (No Ticket Writes)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "incident-triage",
+        "responseMode": "responseNode",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "859027fb-fefa-4668-9db0-4eab79474df1",
+      "name": "Authenticated Incident Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        280
+      ],
+      "webhookId": "f9015dbe-98c0-4ef5-acef-1eea9f003b28",
+      "notes": "Set a fresh n8n Header Auth credential. Synthetic test data only."
+    },
+    {
+      "parameters": {
+        "jsCode": "/**\n * Deterministic incident triage for fabricated operational alerts.\n * No LLM, notifications, tickets, or third-party service calls.\n */\nfunction triageIncident(input) {\n  const p = input && typeof input === \"object\" && !Array.isArray(input) ? input : {};\n  const issues = [];\n  const id = typeof p.event_id === \"string\" ? p.event_id.trim() : \"\";\n  const service = typeof p.service === \"string\" ? p.service.trim() : \"\";\n  const severity = typeof p.severity === \"string\" ? p.severity.trim().toUpperCase() : \"\";\n  const summary = typeof p.summary === \"string\" ? p.summary.trim() : \"\";\n  if (!/^[A-Za-z0-9_-]{8,64}$/.test(id)) issues.push(\"event_id must be 8–64 safe characters\");\n  if (service.length < 2 || service.length > 80) issues.push(\"service must be 2–80 characters\");\n  if (![\"P1\", \"P2\", \"P3\", \"P4\"].includes(severity)) issues.push(\"severity must be P1, P2, P3 or P4\");\n  if (summary.length < 10 || summary.length > 240) issues.push(\"summary must be 10–240 characters\");\n\n  const impact = p.affected_users;\n  if (!Number.isSafeInteger(impact) || impact < 0 || impact > 10000000) {\n    issues.push(\"affected_users must be an integer from 0 to 10000000\");\n  }\n  if (p.critical_service !== undefined && typeof p.critical_service !== \"boolean\") {\n    issues.push(\"critical_service must be boolean when supplied\");\n  }\n  if (issues.length) return { ok: false, event_id: id || null, issues };\n\n  const rank = { P1: 1, P2: 2, P3: 3, P4: 4 };\n  let effective = rank[severity];\n  if (impact >= 100000) effective = Math.min(effective, 1);\n  else if (impact >= 1000 || p.critical_service === true) effective = Math.min(effective, 2);\n  const priority = \"P\" + effective;\n  const routing = {\n    P1: { queue: \"incident-commander\", acknowledge_minutes: 15, escalate: true },\n    P2: { queue: \"service-on-call\", acknowledge_minutes: 30, escalate: true },\n    P3: { queue: \"service-desk\", acknowledge_minutes: 240, escalate: false },\n    P4: { queue: \"planned-backlog\", acknowledge_minutes: 1440, escalate: false }\n  }[priority];\n\n  return { ok: true, event_id: id, service, reported_severity: severity,\n    effective_priority: priority, was_upgraded: priority !== severity,\n    affected_users: impact, ...routing, human_review_required: true,\n    summary_omitted_from_output: true,\n    status: \"RECOMMENDATION_ONLY\",\n    note: \"No ticket, page, notification, AI inference, or external write occurred.\" };\n}\n\nconst body = $input.first().json.body ?? $input.first().json;\nreturn [{ json: triageIncident(body) }];\n"
+      },
+      "id": "076b9f0d-3f16-4a25-a002-7c53a4214c33",
+      "name": "Triage Incident",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        280
+      ],
+      "notes": "Pure JavaScript; no external systems or model calls."
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseCode": "={{ $json.ok ? 200 : 422 }}"
+        }
+      },
+      "id": "142b7a1f-9997-4bbb-93ec-c31cb61719cf",
+      "name": "Return Recommendation",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        720,
+        280
+      ]
+    }
+  ],
+  "connections": {
+    "Authenticated Incident Webhook": {
+      "main": [
+        [
+          {
+            "node": "Triage Incident",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Triage Incident": {
+      "main": [
+        [
+          {
+            "node": "Return Recommendation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Africa/Lagos"
+  },
+  "pinData": {}
+}

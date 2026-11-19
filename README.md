@@ -6,6 +6,10 @@ I design practical automation workflows that help businesses capture information
 
 **Based in Lagos, Nigeria | Open to global remote and contract opportunities**
 
+## Kachi & Reuben — Menswear Commerce Platform (Preview)
+
+**[Read the sanitized commerce-platform case study](projects/kachi-reuben-commerce-platform.md)** — a private-source, menswear-only storefront prototype with a product studio, serverless order-intake logic, Netlify Blobs, Paystack verification code and an n8n event-outbox integration design. **Preview only:** no verified stock, live payments or production deployment are claimed.
+
 ## Actor Portfolio Website & Creative Technology
 
 **[Michael Udeoji — Acting Portfolio Website (case study)](projects/actor-portfolio-website.md)**: responsive HTML-based casting presentation with four selected photographs, film/TV credits, Instagram contact, and QR-based portfolio sharing. The project has been previewed in a browser and packaged for Netlify deployment; a live public URL and the printed QR destination have not been independently verified. No client photos or ZIP binaries are uploaded in this case study.
@@ -18,6 +22,7 @@ For creative writing roles, see my **[dedicated storytelling and copywriting por
 
 | Project | Business challenge | Workflow | Evidence |
 | --- | --- | --- | --- |
+| [Kachi & Reuben — Menswear Commerce Platform](projects/kachi-reuben-commerce-platform.md) | Present a branded menswear catalog and prepare reliable order processing | Responsive preview → serverless order logic → event outbox; optional Paystack checkout remains disabled | [Sanitized case study; private source](projects/kachi-reuben-commerce-platform.md) |
 | [Executive Operations Dashboard — Reporting Prototype](projects/executive-operations-dashboard.md) | See operational triggers and pending decisions in one place | Synthetic n8n module outcomes → reporting model in Google Sheets → Looker Studio dashboard design | [Scope, reporting contract and limitations](projects/executive-operations-dashboard.md) |
 | [Winxtrack — Recruitment Intake](projects/winxtrack-recruitment.md) | Collect applications and organize candidate information | Form → n8n → Google Sheets / email, with AI-assisted screening design | [Workflow image](winxtrack-ai-recruitment-agent.png) |
 | [Kachi & Reuben — Sales Order Intake](projects/kachi-reuben.md) | Standardize product orders and customer details | Form → n8n → Google Sheets → Gmail | [Workflow image](kachi-reuben-sales-order-automation.png) |
@@ -64,8 +69,8 @@ The [executive reporting prototype](projects/executive-operations-dashboard.md) 
 ## Technical Capabilities
 
 - **Automation:** n8n, Salesforce Flow Builder, record-triggered flows, form triggers, workflow orchestration, field mapping and conditional workflow design
-- **Integrations:** Google Sheets, Gmail, Google Calendar; exploratory Meta/WhatsApp API configuration
-- **AI:** AI-agent experimentation, AI-assisted processing, prompt engineering and human review
+- **Integrations:** Google Sheets, Gmail, Google Calendar; Netlify Functions and Paystack integration code (commerce preview); exploratory Meta/WhatsApp API configuration
+- **AI:** AI-agent experimentation, AI-assisted processing, prompt engineering and human review; Adobe Photoshop and AI-assisted creative design
 - **Delivery:** iterative testing, troubleshooting, documentation and business-process analysis
 
 **Reliability focus:** I am expanding my production automation practice to include systematic input validation, error workflows, retry/backoff policies, duplicate prevention, monitoring and recovery. These are **areas for further implementation**, not claims that every portfolio workflow already includes them.
@@ -99,4 +104,4 @@ These are selected project case studies, not downloadable production deployments
 **Location:** Lagos, Nigeria  
 **Interested in:** Global remote automation specialist, AI operations, n8n workflow development, AI evaluation, scriptwriting and creative production contracts.
 
-*Portfolio updated 13 November 2026.*
+*Portfolio updated 19 November 2026.*

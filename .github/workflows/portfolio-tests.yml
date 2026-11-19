@@ -1,0 +1,27 @@
+name: Portfolio JavaScript tests
+
+on:
+  push:
+    paths:
+      - 'examples/**/*.mjs'
+      - '.github/workflows/portfolio-tests.yml'
+  pull_request:
+    paths:
+      - 'examples/**/*.mjs'
+      - '.github/workflows/portfolio-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    name: Node.js unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run all pure-JavaScript demo tests
+        run: node --test examples/*/*.test.mjs

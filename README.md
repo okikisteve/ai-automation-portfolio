@@ -2,6 +2,8 @@
 
 **n8n automation • Business process design • AI-assisted operations • Integrations & troubleshooting**
 
+[![Portfolio JavaScript tests](https://github.com/okikisteve/ai-automation-portfolio/actions/workflows/portfolio-tests.yml/badge.svg)](https://github.com/okikisteve/ai-automation-portfolio/actions/workflows/portfolio-tests.yml)
+
 I design practical automation workflows that help businesses capture information, organize records, coordinate follow-ups and reduce repetitive work. My projects cover recruitment, lead management, customer orders, Salesforce Flow and real-estate CRM/booking workflow design, with an additional background in AI-assisted digital production.
 
 **Based in Lagos, Nigeria | Open to global remote and contract opportunities**

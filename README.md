@@ -23,6 +23,8 @@ For creative writing roles, see my **[dedicated storytelling and copywriting por
 | Project | Business challenge | Workflow | Evidence |
 | --- | --- | --- | --- |
 | [Kachi & Reuben — Menswear Commerce Platform](projects/kachi-reuben-commerce-platform.md) | Present a branded menswear catalog and prepare reliable order processing | Responsive preview → serverless order logic → event outbox; optional Paystack checkout remains disabled | [Sanitized case study; private source](projects/kachi-reuben-commerce-platform.md) |
+| [AI-Agent Action Gate — Booking Safety Demo](examples/agent-action-gate/README.md) | Prevent unsafe automatic booking from model-proposed actions | Pure JavaScript validation → n8n Code node → manual-approval decision | [Code, tests and inactive workflow](examples/agent-action-gate/README.md) |
+| [Incident Triage & Routing — Decision Demo](examples/incident-triage/README.md) | Normalize incident severity and prioritize human response | Synthetic incident → deterministic impact-based routing → no external actions | [Code, tests and inactive workflow](examples/incident-triage/README.md) |
 | [Executive Operations Dashboard — Reporting Prototype](projects/executive-operations-dashboard.md) | See operational triggers and pending decisions in one place | Synthetic n8n module outcomes → reporting model in Google Sheets → Looker Studio dashboard design | [Scope, reporting contract and limitations](projects/executive-operations-dashboard.md) |
 | [Winxtrack — Recruitment Intake](projects/winxtrack-recruitment.md) | Collect applications and organize candidate information | Form → n8n → Google Sheets / email, with AI-assisted screening design | [Workflow image](winxtrack-ai-recruitment-agent.png) |
 | [Kachi & Reuben — Sales Order Intake](projects/kachi-reuben.md) | Standardize product orders and customer details | Form → n8n → Google Sheets → Gmail | [Workflow image](kachi-reuben-sales-order-automation.png) |
@@ -57,6 +59,18 @@ An isolated n8n demonstration evaluated 12 operational capabilities using fictio
 The [executive reporting prototype](projects/executive-operations-dashboard.md) outlines how **run IDs, module statuses, priorities, SLA risks and proposed next actions** can be normalized for leadership review in Google Sheets and Looker Studio. It complements the 12-module n8n simulation and separates **observed simulation evidence** from proposed charts and integrations. This is not a claim of a production-connected dashboard.
 
 ## Reproducible Code & Unit Tests
+
+### New: AI-agent decision gate (pure JavaScript + n8n)
+
+**[AI-agent inspection-booking policy gate](examples/agent-action-gate/README.md)** — runnable JavaScript validator and **14 Node.js test cases** with an importable, inactive n8n workflow. Demonstrates explicit-consent, business-hours, listing-verification and availability safeguards for proposed AI actions. The successful output **requires human approval**; it does not execute a calendar write or call an LLM.
+
+### New: operational incident triage (pure JavaScript + n8n)
+
+**[Incident priority/routing demo](examples/incident-triage/README.md)** — runnable JavaScript classification, **13 Node.js test cases** and an importable, inactive n8n workflow. Uses fictional alerts and deterministic priority escalation; no ticket, pager, production integration or model call is performed.
+
+**[Automated test configuration](.github/workflows/portfolio-tests.yml)** — GitHub Actions workflow configured to run the JavaScript demo tests on qualifying pushes and pull requests. A workflow file alone is not proof of a successful CI run.
+
+### Existing: real-estate qualification (JavaScript + n8n)
 
 **[Real-estate automation technical demo](examples/real-estate-lead-intake/README.md)** — importable, inactive n8n webhook workflow; standalone JavaScript for five-service lead qualification; and nine unit tests covering boundary budgets, validation and repeat inputs. All nine JavaScript test bodies passed in an isolated test harness. The n8n demo has **not** been executed against live credentials or presented as a production system.
 
@@ -104,4 +118,4 @@ These are selected project case studies, not downloadable production deployments
 **Location:** Lagos, Nigeria  
 **Interested in:** Global remote automation specialist, AI operations, n8n workflow development, AI evaluation, scriptwriting and creative production contracts.
 
-*Portfolio updated 19 November 2026.*
+*Portfolio updated 19 November 2026 — added reproducible agent-policy and incident-routing demos.*

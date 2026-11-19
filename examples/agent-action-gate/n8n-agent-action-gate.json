@@ -1,0 +1,85 @@
+{
+  "name": "Portfolio Demo — AI Action Gate (No External Tool Execution)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "agent-action-gate",
+        "responseMode": "responseNode",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "859027fb-fefa-4668-9db0-4eab79474df1",
+      "name": "Authenticated Action Gate",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        280
+      ],
+      "webhookId": "f9015dbe-98c0-4ef5-acef-1eea9f003b28",
+      "notes": "Set a fresh n8n Header Auth credential. Synthetic test data only."
+    },
+    {
+      "parameters": {
+        "jsCode": "/**\n * AI-agent action gate. Offline, deterministic and side-effect-free.\n * A model's proposed tool call is NOT proof of customer consent or availability.\n * Input context is synthetic in this demo; a real backend must authenticate it.\n */\nfunction evaluateAgentAction(proposal, context = {}) {\n  const issues = [];\n  const p = proposal && typeof proposal === \"object\" && !Array.isArray(proposal) ? proposal : {};\n  const c = context && typeof context === \"object\" && !Array.isArray(context) ? context : {};\n  const id = typeof p.request_id === \"string\" ? p.request_id.trim() : \"\";\n  const action = typeof p.action === \"string\" ? p.action.trim() : \"\";\n  if (!/^[A-Za-z0-9_-]{8,64}$/.test(id)) issues.push(\"request_id must be 8–64 safe characters\");\n  if (![\"propose_slot\", \"book_inspection\", \"request_human_review\"].includes(action)) {\n    issues.push(\"action must be propose_slot, book_inspection or request_human_review\");\n  }\n\n  if (action === \"request_human_review\" && issues.length === 0) {\n    return { ok: true, request_id: id, verdict: \"HUMAN_REVIEW\", issues: [],\n      next_step: \"A human reviews the request. No external action was executed.\" };\n  }\n\n  if (action === \"propose_slot\" || action === \"book_inspection\") {\n    const b = p.booking && typeof p.booking === \"object\" && !Array.isArray(p.booking) ? p.booking : {};\n    const date = typeof b.date === \"string\" ? b.date : \"\";\n    const start = typeof b.start_time === \"string\" ? b.start_time : \"\";\n    const end = typeof b.end_time === \"string\" ? b.end_time : \"\";\n    const timeToMinutes = value => /^([01]\\d|2[0-3]):[0-5]\\d$/.test(value)\n      ? Number(value.slice(0, 2)) * 60 + Number(value.slice(3)) : -1;\n    const startMin = timeToMinutes(start);\n    const endMin = timeToMinutes(end);\n    const validDate = /^\\d{4}-\\d{2}-\\d{2}$/.test(date)\n      && !Number.isNaN(Date.parse(date + \"T00:00:00Z\"))\n      && new Date(date + \"T00:00:00Z\").toISOString().slice(0, 10) === date;\n    if (!validDate) issues.push(\"booking date must be a real YYYY-MM-DD date\");\n    if (validDate && new Date(date + \"T12:00:00Z\").getUTCDay() === 0) {\n      issues.push(\"Sunday bookings are not allowed in this demo\");\n    }\n    if (b.timezone !== \"Africa/Lagos\") issues.push(\"timezone must be Africa/Lagos\");\n    if (startMin < 540 || endMin > 1080 || endMin <= startMin || endMin - startMin > 120) {\n      issues.push(\"slot must be 09:00–18:00, positive duration and at most 120 minutes\");\n    }\n    if (c.listing_verified !== true) issues.push(\"listing verification is required\");\n    if (action === \"book_inspection\") {\n      if (c.customer_confirmed !== true) issues.push(\"independent customer confirmation is required\");\n      if (c.calendar_available !== true) issues.push(\"calendar availability is required\");\n    }\n  }\n  if (issues.length) {\n    return { ok: false, request_id: id || null, verdict: \"BLOCKED\", issues,\n      next_step: \"Request correction or human review. No external action was executed.\" };\n  }\n  return { ok: true, request_id: id, verdict: \"HUMAN_APPROVAL_REQUIRED\", issues: [],\n    next_step: action === \"book_inspection\"\n      ? \"Revalidate consent and availability in trusted systems; require human approval before any calendar write.\"\n      : \"Human verifies the proposed slot before it is offered to the customer.\" };\n}\n\nconst body = $input.first().json.body ?? $input.first().json;\nreturn [{ json: evaluateAgentAction(body.proposal ?? body, body.context ?? {}) }];\n"
+      },
+      "id": "076b9f0d-3f16-4a25-a002-7c53a4214c33",
+      "name": "Policy Gate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        280
+      ],
+      "notes": "Pure JavaScript; no external systems or model calls."
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseCode": "={{ $json.ok ? 200 : 422 }}"
+        }
+      },
+      "id": "142b7a1f-9997-4bbb-93ec-c31cb61719cf",
+      "name": "Return Decision",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        720,
+        280
+      ]
+    }
+  ],
+  "connections": {
+    "Authenticated Action Gate": {
+      "main": [
+        [
+          {
+            "node": "Policy Gate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Policy Gate": {
+      "main": [
+        [
+          {
+            "node": "Return Decision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Africa/Lagos"
+  },
+  "pinData": {}
+}

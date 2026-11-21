@@ -1,0 +1,85 @@
+{
+  "name": "Portfolio Demo — Webhook Outbox Delivery Planner (No Sends)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "portfolio-delivery-policy-demo",
+        "responseMode": "responseNode",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "cdf4a561-cf0f-4192-88db-76c1bcb28120",
+      "name": "Authenticated Demo Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        200,
+        300
+      ],
+      "webhookId": "d4238aab-891e-412c-8b3e-72d2f38a3bea",
+      "notes": "Attach your own Header Auth credential before testing with synthetic records."
+    },
+    {
+      "parameters": {
+        "jsCode": "/**\n * Synthetic, credential-free webhook outbox delivery decision engine.\n * This only PLANS next steps. It does not send requests, store state,\n * acquire locks, or implement persistent idempotency.\n */\nfunction planWebhookDelivery(input) {\n  const p = input && typeof input === \"object\" && !Array.isArray(input) ? input : {};\n  const errors = [];\n  const eventId = typeof p.event_id === \"string\" ? p.event_id.trim() : \"\";\n  const attempt = p.attempt;\n  const state = p.existing_event_state;\n  const networkError = p.network_error === true;\n  const status = p.http_status === undefined ? null : p.http_status;\n  const retryAfter = p.retry_after_seconds ?? null;\n\n  if (!/^[A-Za-z0-9_-]{8,64}$/.test(eventId))\n    errors.push(\"event_id must be 8–64 safe characters\");\n  if (!Number.isInteger(attempt) || attempt < 1 || attempt > 5)\n    errors.push(\"attempt must be an integer from 1 through 5\");\n  if (![\"unseen\", \"processing\", \"delivered\", \"failed\"].includes(state))\n    errors.push(\"existing_event_state must be unseen, processing, delivered or failed\");\n  if (p.network_error !== undefined && typeof p.network_error !== \"boolean\")\n    errors.push(\"network_error must be a boolean\");\n  if (status !== null && (!Number.isInteger(status) || status < 100 || status > 599))\n    errors.push(\"http_status must be an HTTP status integer between 100 and 599\");\n  if (networkError && status !== null)\n    errors.push(\"network_error and http_status cannot both be present\");\n  if (!networkError && status === null && ![\"processing\", \"delivered\"].includes(state))\n    errors.push(\"provide http_status or network_error for a delivery attempt\");\n  if (retryAfter !== null && (!Number.isInteger(retryAfter) || retryAfter < 0 || retryAfter > 3600))\n    errors.push(\"retry_after_seconds must be an integer from 0 to 3600\");\n  if (errors.length) return { ok: false, event_id: eventId || null, errors };\n\n  const outcome = (decision, delaySeconds, reason) => ({\n    ok: true, event_id: eventId, decision, delay_seconds: delaySeconds,\n    reason, external_action_performed: false,\n    note: \"Simulation only. A real outbox needs durable atomic state, locking and delivery receipts.\"\n  });\n\n  // State comes from a trusted store in real systems; this demo receives\n  // it as input for deterministic illustration. No actual lock is obtained.\n  if (state === \"delivered\")\n    return outcome(\"SUPPRESS_DUPLICATE\", null, \"Trusted store already marked event delivered\");\n  if (state === \"processing\")\n    return outcome(\"WAIT_FOR_LOCK\", null, \"Another worker may own this event; review lease state\");\n\n  if (!networkError && status >= 200 && status <= 299)\n    return outcome(\"MARK_DELIVERED\", null, \"Receiver returned a 2xx response\");\n\n  // A 409 can mean an already processed event or a real business conflict;\n  // never blindly retry or mark delivered without confirmation.\n  if (status === 409)\n    return outcome(\"HUMAN_REVIEW\", null, \"409 conflict requires receiver-state reconciliation\");\n\n  const transient = networkError || [408, 425, 429].includes(status) || (status >= 500 && status <= 599);\n  if (!transient)\n    return outcome(\"HUMAN_REVIEW\", null, \"Non-transient or ambiguous response\");\n\n  if (attempt >= 5)\n    return outcome(\"DEAD_LETTER_REVIEW\", null, \"Maximum five attempts reached\");\n\n  // Exponential backoff. Real systems should add jitter, rate limits,\n  // Retry-After date parsing and DLQ persistence.\n  const calculated = Math.min(900, 15 * (2 ** (attempt - 1)));\n  const delay = (status === 429 || status === 503) && retryAfter !== null\n    ? Math.max(calculated, retryAfter)\n    : calculated;\n  return outcome(\"RETRY_LATER\", delay, \"Transient failure; replay only with stable event ID and safe receiver semantics\");\n}\n\nconst input = $input.first().json.body ?? $input.first().json;\nreturn [{ json: planWebhookDelivery(input) }];\n"
+      },
+      "id": "c94be3ee-5109-43c5-94e0-173d7ad5e6f4",
+      "name": "Plan Delivery",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ],
+      "notes": "No network actions or persistence. Decision policy only."
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseCode": "={{ $json.ok ? 200 : 422 }}"
+        }
+      },
+      "id": "6b7edbca-8811-4e12-a519-e455b6d6cd76",
+      "name": "Return Plan",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        680,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Authenticated Demo Webhook": {
+      "main": [
+        [
+          {
+            "node": "Plan Delivery",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Plan Delivery": {
+      "main": [
+        [
+          {
+            "node": "Return Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Africa/Lagos"
+  },
+  "pinData": {}
+}

@@ -4,9 +4,21 @@
 
 [![Portfolio JavaScript tests](https://github.com/okikisteve/ai-automation-portfolio/actions/workflows/portfolio-tests.yml/badge.svg)](https://github.com/okikisteve/ai-automation-portfolio/actions/workflows/portfolio-tests.yml)
 
-I design practical automation workflows that help businesses capture information, organize records, coordinate follow-ups and reduce repetitive work. My projects cover recruitment, lead management, customer orders, Salesforce Flow and real-estate CRM/booking workflow design, with an additional background in AI-assisted digital production.
+I design practical, auditable automation workflows that help businesses capture enquiries, organize CRM records, coordinate follow-ups and reduce repetitive work. My work spans recruitment, lead management, order processing, Salesforce Flow, real-estate workflows, technical quality assurance, and AI-assisted digital production.
 
 **Based in Lagos, Nigeria | Open to global remote and contract opportunities**
+
+## Verified Technical Evidence
+
+**55 automated JavaScript tests across four public demo suites** covering input validation, agent-action safety, incident priority/routing, and webhook retry decisions. [View the successful GitHub Actions run (21 November 2026)](https://github.com/okikisteve/ai-automation-portfolio/actions/runs/44909128270).
+
+Run all tests with Node.js 22+:
+
+```bash
+node --test examples/*/*.test.mjs
+```
+
+Each demo keeps fictional data and credentials out of the repository. These tests verify **local decision logic**, not live external integrations.
 
 ## Kachi & Reuben — Menswear Commerce Platform (Preview)
 
@@ -15,6 +27,10 @@ I design practical automation workflows that help businesses capture information
 ## Actor Portfolio Website & Creative Technology
 
 **[Michael Udeoji — Acting Portfolio Website (case study)](projects/actor-portfolio-website.md)**: responsive HTML-based casting presentation with four selected photographs, film/TV credits, Instagram contact, and QR-based portfolio sharing. The project has been previewed in a browser and packaged for Netlify deployment; a live public URL and the printed QR destination have not been independently verified. No client photos or ZIP binaries are uploaded in this case study.
+
+## Business Automation Discovery & Proposal Design
+
+**[Investment-services operations — anonymized discovery case study](projects/investment-services-automation-discovery.md)** presents process-mapping hypotheses, CRM and follow-up architecture, human-in-the-loop AI controls, reporting metrics and a proposed rollout. It is an **assessment and proposal exercise only**; no implementation, customer authorization or improvement in business performance is claimed.
 
 ## Creative Copywriting & Storytelling Portfolio
 
@@ -25,6 +41,8 @@ For creative writing roles, see my **[dedicated storytelling and copywriting por
 | Project | Business challenge | Workflow | Evidence |
 | --- | --- | --- | --- |
 | [Kachi & Reuben — Menswear Commerce Platform](projects/kachi-reuben-commerce-platform.md) | Present a branded menswear catalog and prepare reliable order processing | Responsive preview → serverless order logic → event outbox; optional Paystack checkout remains disabled | [Sanitized case study; private source](projects/kachi-reuben-commerce-platform.md) |
+| [Webhook Reliability & Delivery Planner](examples/reliable-webhook-delivery/README.md) | Reduce unsafe webhook retries and duplicate-processing risk | Pure JavaScript delivery decision engine → inactive n8n webhook demo | [19 tests and reproducible source](examples/reliable-webhook-delivery/README.md) |
+| [Investment Operations — Automation Discovery](projects/investment-services-automation-discovery.md) | Map manual handoffs and a responsible AI/CRM roadmap | Anonymized process hypotheses → human approval → follow-ups and KPIs | [Proposal-stage case study; no deployment claim](projects/investment-services-automation-discovery.md) |
 | [AI-Agent Action Gate — Booking Safety Demo](examples/agent-action-gate/README.md) | Prevent unsafe automatic booking from model-proposed actions | Pure JavaScript validation → n8n Code node → manual-approval decision | [Code, tests and inactive workflow](examples/agent-action-gate/README.md) |
 | [Incident Triage & Routing — Decision Demo](examples/incident-triage/README.md) | Normalize incident severity and prioritize human response | Synthetic incident → deterministic impact-based routing → no external actions | [Code, tests and inactive workflow](examples/incident-triage/README.md) |
 | [Executive Operations Dashboard — Reporting Prototype](projects/executive-operations-dashboard.md) | See operational triggers and pending decisions in one place | Synthetic n8n module outcomes → reporting model in Google Sheets → Looker Studio dashboard design | [Scope, reporting contract and limitations](projects/executive-operations-dashboard.md) |
@@ -62,6 +80,10 @@ The [executive reporting prototype](projects/executive-operations-dashboard.md) 
 
 ## Reproducible Code & Unit Tests
 
+### Webhook reliability & safe delivery decisions (pure JavaScript + n8n)
+
+**[Outbox retry and duplicate-suppression policy demo](examples/reliable-webhook-delivery/README.md)** — a pure JavaScript decision function, **19 Node.js tests** and an inactive authenticated n8n workflow. Demonstrates how to *plan* retries, flag conflicts and respond to simulated duplicate states. **It does not implement actual persistent state, locks or network delivery.**
+
 ### New: AI-agent decision gate (pure JavaScript + n8n)
 
 **[AI-agent inspection-booking policy gate](examples/agent-action-gate/README.md)** — runnable JavaScript validator and **14 Node.js test cases** with an importable, inactive n8n workflow. Demonstrates explicit-consent, business-hours, listing-verification and availability safeguards for proposed AI actions. The successful output **requires human approval**; it does not execute a calendar write or call an LLM.
@@ -70,7 +92,7 @@ The [executive reporting prototype](projects/executive-operations-dashboard.md) 
 
 **[Incident priority/routing demo](examples/incident-triage/README.md)** — runnable JavaScript classification, **13 Node.js test cases** and an importable, inactive n8n workflow. Uses fictional alerts and deterministic priority escalation; no ticket, pager, production integration or model call is performed.
 
-**[Automated test configuration](.github/workflows/portfolio-tests.yml)** — GitHub Actions workflow configured to run the JavaScript demo tests on qualifying pushes and pull requests. A workflow file alone is not proof of a successful CI run.
+**[Automated test configuration](.github/workflows/portfolio-tests.yml)** — GitHub Actions runs all four public demo suites on qualifying pushes and pull requests. The [21 November 2026 run passed](https://github.com/okikisteve/ai-automation-portfolio/actions/runs/44909128270), verifying **55 JavaScript tests**, not production platform behavior.
 
 ### Existing: real-estate qualification (JavaScript + n8n)
 
@@ -87,7 +109,7 @@ The [executive reporting prototype](projects/executive-operations-dashboard.md) 
 - **Automation:** n8n, Salesforce Flow Builder, record-triggered flows, form triggers, workflow orchestration, field mapping and conditional workflow design
 - **Integrations:** Google Sheets, Gmail, Google Calendar; Netlify Functions and Paystack integration code (commerce preview); exploratory Meta/WhatsApp API configuration
 - **AI:** AI-agent experimentation, AI-assisted processing, prompt engineering and human review; Adobe Photoshop and AI-assisted creative design
-- **Delivery:** iterative testing, troubleshooting, documentation and business-process analysis
+- **Delivery:** iterative testing, Node.js test suites, GitHub Actions CI, webhook reliability policy design, troubleshooting, documentation and business-process analysis
 
 **Reliability focus:** I am expanding my production automation practice to include systematic input validation, error workflows, retry/backoff policies, duplicate prevention, monitoring and recovery. These are **areas for further implementation**, not claims that every portfolio workflow already includes them.
 
@@ -120,4 +142,4 @@ These are selected project case studies, not downloadable production deployments
 **Location:** Lagos, Nigeria  
 **Interested in:** Global remote automation specialist, AI operations, n8n workflow development, AI evaluation, scriptwriting and creative production contracts.
 
-*Portfolio updated 19 November 2026 — added reproducible agent-policy and incident-routing demos.*
+*Portfolio updated 21 November 2026 — expanded technical evidence, verified CI and published an anonymized automation-discovery case study.*

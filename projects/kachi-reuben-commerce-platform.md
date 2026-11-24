@@ -1,7 +1,7 @@
 # Kachi & Reuben — Menswear Commerce Platform (Preview)
 
 **Category:** E-commerce prototyping · Serverless JavaScript · Workflow integrations · Product operations  
-**Status:** Code and deployment instructions maintained in a **private repository**. This is a development/preview project, **not a live store or evidence of completed payments** (19 November 2026).
+**Status:** Code and deployment instructions maintained in a **private repository**. Storefront deployment was reported on 24 November 2026; public availability and end-to-end payment processing have not been independently verified.
 
 ## Business context
 
@@ -15,6 +15,12 @@ Kachi & Reuben is a **men's-wear-only** fashion concept centered on masculine st
 - **Paystack payment integration code:** Checkout initialization uses server-held credentials and authoritative prices; webhook and verification logic are designed to validate transaction details before marking an order paid. **No real payment or live merchant configuration is claimed.**
 - **Asynchronous n8n handoff:** A persisted event outbox is designed to queue order and payment-state events, with a scheduled retry mechanism. Connecting the receiver and proving an end-to-end synchronization remain deployment tasks.
 - **WhatsApp contact handoff:** Prepares a product/size enquiry for the customer to send manually. Opening WhatsApp is **not** evidence of a message sent or an order confirmed.
+
+## November 2026 progress update
+
+- A 24 November GitHub commit was verified in the private source repository: four enhanced product images were connected to homepage and collection cards.
+- Netlify publication was reported; live visual QA and custom-domain reachability remain to be verified.
+- Customer enquiry acknowledgment was observed in testing; this is not a paid order or stock reservation. Delivery of the corresponding business notification remains unresolved.
 
 ## Simplified architecture
 

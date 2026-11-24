@@ -10,7 +10,9 @@ I design practical, auditable automation workflows that help businesses capture 
 
 ## Verified Technical Evidence
 
-**55 automated JavaScript tests across four public demo suites** covering input validation, agent-action safety, incident priority/routing, and webhook retry decisions. [View the successful GitHub Actions run (21 November 2026)](https://github.com/okikisteve/ai-automation-portfolio/actions/runs/44909128270).
+**55 automated JavaScript tests previously verified across four public demo suites**, covering input validation, agent-action safety, incident priority/routing, and webhook retry decisions. [View the successful GitHub Actions run (21 November 2026)](https://github.com/okikisteve/ai-automation-portfolio/actions/runs/44909128270).
+
+**New on 24 November:** [Quotation Cost Controls](examples/quotation-cost-controls/README.md) adds nine locally passing tests for deterministic financial calculations. The published source and tests match the locally tested files. The repository now contains five demo suites (64 test cases based on the prior 55 plus nine new tests); the new combined CI result has not yet been verified.
 
 Run all tests with Node.js 22+:
 
@@ -22,7 +24,7 @@ Each demo keeps fictional data and credentials out of the repository. These test
 
 ## Kachi & Reuben — Menswear Commerce Platform (Preview)
 
-**[Read the sanitized commerce-platform case study](projects/kachi-reuben-commerce-platform.md)** — a private-source, menswear-only storefront prototype with a product studio, serverless order-intake logic, Netlify Blobs, Paystack verification code and an n8n event-outbox integration design. **Preview only:** no verified stock, live payments or production deployment are claimed.
+**[Read the sanitized commerce-platform case study](projects/kachi-reuben-commerce-platform.md)** — a private-source, menswear-only storefront prototype with a product studio, serverless order-intake logic, Netlify Blobs, Paystack verification code and an n8n event-outbox integration design. **Release progress:** four enhanced product images were connected to homepage and collection cards in a verified 24 November source commit. Netlify publication was reported; public availability and live payments remain unverified.
 
 ## Actor Portfolio Website & Creative Technology
 
@@ -41,6 +43,7 @@ For creative writing roles, see my **[dedicated storytelling and copywriting por
 | Project | Business challenge | Workflow | Evidence |
 | --- | --- | --- | --- |
 | [Kachi & Reuben — Menswear Commerce Platform](projects/kachi-reuben-commerce-platform.md) | Present a branded menswear catalog and prepare reliable order processing | Responsive preview → serverless order logic → event outbox; optional Paystack checkout remains disabled | [Sanitized case study; private source](projects/kachi-reuben-commerce-platform.md) |
+| [Quotation Cost Controls](examples/quotation-cost-controls/README.md) | Prevent inconsistent itemized estimates and opaque fee calculations | Fractional quantities → integer money calculations → explicit admin/contingency/tax policy | [Nine locally passed tests; standalone demo](examples/quotation-cost-controls/README.md) |
 | [Webhook Reliability & Delivery Planner](examples/reliable-webhook-delivery/README.md) | Reduce unsafe webhook retries and duplicate-processing risk | Pure JavaScript delivery decision engine → inactive n8n webhook demo | [19 tests and reproducible source](examples/reliable-webhook-delivery/README.md) |
 | [Investment Operations — Automation Discovery](projects/investment-services-automation-discovery.md) | Map manual handoffs and a responsible AI/CRM roadmap | Anonymized process hypotheses → human approval → follow-ups and KPIs | [Proposal-stage case study; no deployment claim](projects/investment-services-automation-discovery.md) |
 | [AI-Agent Action Gate — Booking Safety Demo](examples/agent-action-gate/README.md) | Prevent unsafe automatic booking from model-proposed actions | Pure JavaScript validation → n8n Code node → manual-approval decision | [Code, tests and inactive workflow](examples/agent-action-gate/README.md) |
@@ -80,6 +83,10 @@ The [executive reporting prototype](projects/executive-operations-dashboard.md) 
 
 ## Reproducible Code & Unit Tests
 
+### Quotation cost controls (pure JavaScript)
+
+**[Itemized estimate calculation](examples/quotation-cost-controls/README.md)** — nine locally passing tests for fractional quantities, lump sums, fee and tax policy, duplicate IDs, rounding and invalid input. Uses synthetic data and integer kobo; no live accounting, invoice issuance or n8n deployment is claimed.
+
 ### Webhook reliability & safe delivery decisions (pure JavaScript + n8n)
 
 **[Outbox retry and duplicate-suppression policy demo](examples/reliable-webhook-delivery/README.md)** — a pure JavaScript decision function, **19 Node.js tests** and an inactive authenticated n8n workflow. Demonstrates how to *plan* retries, flag conflicts and respond to simulated duplicate states. **It does not implement actual persistent state, locks or network delivery.**
@@ -92,7 +99,7 @@ The [executive reporting prototype](projects/executive-operations-dashboard.md) 
 
 **[Incident priority/routing demo](examples/incident-triage/README.md)** — runnable JavaScript classification, **13 Node.js test cases** and an importable, inactive n8n workflow. Uses fictional alerts and deterministic priority escalation; no ticket, pager, production integration or model call is performed.
 
-**[Automated test configuration](.github/workflows/portfolio-tests.yml)** — GitHub Actions runs all four public demo suites on qualifying pushes and pull requests. The [21 November 2026 run passed](https://github.com/okikisteve/ai-automation-portfolio/actions/runs/44909128270), verifying **55 JavaScript tests**, not production platform behavior.
+**[Automated test configuration](.github/workflows/portfolio-tests.yml)** — GitHub Actions is configured to run every public demo suite on qualifying pushes and pull requests. The [21 November 2026 run passed](https://github.com/okikisteve/ai-automation-portfolio/actions/runs/44909128270), verifying **55 JavaScript tests**, not production platform behavior.
 
 ### Existing: real-estate qualification (JavaScript + n8n)
 
@@ -142,4 +149,4 @@ These are selected project case studies, not downloadable production deployments
 **Location:** Lagos, Nigeria  
 **Interested in:** Global remote automation specialist, AI operations, n8n workflow development, AI evaluation, scriptwriting and creative production contracts.
 
-*Portfolio updated 21 November 2026 — expanded technical evidence, verified CI and published an anonymized automation-discovery case study.*
+*Portfolio updated 24 November 2026 — quotation cost-control demo, nine new local tests and storefront release-progress documentation.*

@@ -34,6 +34,10 @@ Each demo keeps fictional data and credentials out of the repository. These test
 
 **[Investment-services operations — anonymized discovery case study](projects/investment-services-automation-discovery.md)** presents process-mapping hypotheses, CRM and follow-up architecture, human-in-the-loop AI controls, reporting metrics and a proposed rollout. It is an **assessment and proposal exercise only**; no implementation, customer authorization or improvement in business performance is claimed.
 
+## Photo & Visual Editing Portfolio
+
+**[View my dedicated visual editing and creative direction portfolio](visual-editing-portfolio/README.md)** — selected menswear storefront visuals, campaign layout, AI-assisted interior and apparel concept studies, and a transparent description of the editing evidence available.
+
 ## Creative Copywriting & Storytelling Portfolio
 
 For creative writing roles, see my **[dedicated storytelling and copywriting portfolio](creative-writing-portfolio/README.md)**, featuring six original samples: mystery video scripting, children's animation, brand copy, a three-email outreach sequence, launch-page copy and cross-platform social content.
